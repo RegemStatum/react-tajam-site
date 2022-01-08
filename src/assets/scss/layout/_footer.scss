@@ -1,0 +1,197 @@
+@use "../abstracts" as *;
+@use "../components" as *;
+
+.footer {
+  @include breakpoint {
+    background-image: none;
+    background-color: getColor("bg-color");
+    @include sectionPadding();
+    color: getColor();
+
+    @include lg {
+      .inf-container,
+      .footer-links-container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .inf-container {
+        .inf {
+          max-width: 18.125rem;
+          margin-right: getMargin();
+
+          p {
+            width: 100%;
+          }
+        }
+      }
+
+      .studio h4,
+      .in-touch h4 {
+        margin-top: getMargin();
+        margin-bottom: getMargin(400);
+      }
+
+      .footer-links-container {
+        p {
+          width: 30%;
+        }
+
+        .footer-links {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    p,
+    h4 {
+      color: getColor();
+      font-size: 0.9rem;
+      width: auto;
+
+      @include md {
+        width: 80%;
+      }
+    }
+
+    h4 {
+      text-transform: uppercase;
+      font-size: getFontSize(400);
+      font-weight: 600;
+    }
+
+    .inf img,
+    h4 {
+      margin-bottom: getMargin(200);
+    }
+
+    .inf-container > div {
+      margin-bottom: getMargin(800);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      @include defTransition;
+    }
+
+    .studio {
+      max-width: 20rem;
+
+      a:hover {
+        color: getColor("second-color");
+      }
+
+      .place p {
+        margin-bottom: getMargin(200);
+      }
+
+      .place,
+      .phone {
+        display: flex;
+
+        p {
+          width: 90%;
+
+          @include md {
+            width: 80%;
+          }
+        }
+
+        svg {
+          width: 22px;
+          margin-right: getMargin(200);
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+    .in-touch {
+      max-width: 20rem;
+      form {
+        display: flex;
+
+        input {
+          display: block;
+          font-size: getFontSize();
+          border: 1px solid getColor("text-color");
+          padding: getPadding(200) getPadding();
+          margin-right: getMargin(200);
+          opacity: 0.9;
+          background-color: transparent;
+          color: getColor();
+
+          &::placeholder {
+            font-family: "Roboto", sans-serif;
+            font-weight: 300;
+            opacity: 1;
+          }
+
+          &:focus-visible {
+            outline: none;
+            border-color: getColor("second-color");
+          }
+        }
+
+        button {
+          background-color: getColor();
+          border: none;
+          padding: 0 getPadding(600);
+          cursor: pointer;
+          @include defTransition;
+
+          &:hover {
+            background-color: getColor("second-color");
+          }
+        }
+      }
+
+      .social-icons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 80%;
+        margin-top: getMargin();
+
+        .social-icon {
+          position: relative;
+          width: 35px;
+          height: 35px;
+          border: 1px solid getColor();
+          border-radius: 50%;
+          @include defTransition;
+
+          &:hover {
+            border-color: getColor("second-color");
+          }
+
+          svg {
+            @include posAbsolute;
+            font-size: 1.3rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+    }
+
+    .footer-links {
+      margin-bottom: getMargin(200);
+
+      a {
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 0.9rem;
+        margin-right: getMargin();
+        transition: none;
+
+        &:hover {
+          padding-bottom: 0.1rem;
+          border-bottom: 1px solid getColor();
+        }
+      }
+    }
+  }
+}

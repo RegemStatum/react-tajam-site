@@ -1,0 +1,20 @@
+@use "../components" as *;
+@use "../abstracts/" as *;
+
+@include breakpoint {
+  .header {
+    &.with-home-header {
+      @include backgroundImage("../../images/header-bg.jpg");
+      background-color: none;
+    }
+  }
+
+  .footer.home-footer {
+    @include backgroundImage("../../images/footer-bg.jpg");
+    background-color: none;
+
+    .in-touch button {
+      background-color: #9f98b2;
+    }
+  }
+}

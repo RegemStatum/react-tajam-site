@@ -1,0 +1,163 @@
+@use "../abstracts" as *;
+@use "../components" as *;
+
+.header {
+  //HEADER
+  @include breakpoint {
+    background-image: none;
+    background-color: getColor("bg-color");
+
+    .top-menu {
+      padding: 1rem 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .links {
+      a {
+        @include ref;
+      }
+    }
+
+    .links-container {
+      @include posAbsolute;
+      width: 100%;
+      text-align: center;
+      z-index: 1;
+      height: 0;
+      overflow: hidden;
+      background-color: getColor("bg-color");
+
+      .links li {
+        padding: 1rem 0;
+        cursor: pointer;
+        &:hover {
+          background-color: getColor("second-color");
+        }
+      }
+    }
+
+    .mobile-menu {
+      padding-top: 0.35rem;
+      height: auto;
+      cursor: pointer;
+      @include defTransition;
+
+      &:hover {
+        transform: rotate(90deg);
+      }
+
+      svg {
+        fill: getColor("second-color");
+        opacity: 0.8;
+        width: 2rem;
+        stroke-width: 0.2rem;
+        height: 2rem;
+      }
+    }
+  }
+
+  @include lg {
+    .logo {
+      margin-right: 4.5rem;
+    }
+
+    .links-container {
+      height: auto !important;
+      position: static;
+      background-color: transparent;
+
+      .links {
+        display: flex;
+        justify-content: space-between;
+
+        li {
+          padding-top: 0.83rem;
+          padding-right: 1.5rem;
+          padding-bottom: 0;
+
+          &:hover {
+            background-color: transparent;
+          }
+
+          a {
+            @include defTransition;
+            font-weight: bold;
+
+            &:hover {
+              color: getColor("second-color");
+            }
+          }
+        }
+      }
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+  }
+
+  //HOME_HEADER
+  .home-header {
+    @include breakpoint {
+      padding-top: getPadding("xl");
+      text-align: center;
+      color: getColor();
+
+      h1 {
+        position: relative;
+        margin-bottom: getMargin(700);
+        padding-bottom: getPadding(300);
+        &::after {
+          @include headingUnderscore;
+          opacity: 1;
+          height: 0.05rem;
+          background-color: getColor("second-color");
+        }
+      }
+
+      p {
+        min-height: 224px;
+        padding-bottom: getPadding(700);
+        width: 90%;
+        margin: 0 auto;
+        font-size: getFontSize();
+        color: getColor();
+        @include defTransition;
+
+        @include md {
+          width: 70%;
+          min-height: 170px;
+        }
+      }
+
+      .btn {
+        margin-bottom: getMargin(800);
+      }
+
+      .swap-markers {
+        width: 20%;
+        max-width: 75px;
+        margin: 0 auto;
+        padding-bottom: getPadding(500);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        .marker {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          border: 1px solid getColor();
+          @include defTransition;
+
+          &.highlighted {
+            box-shadow: 0 0 5px getColor("second-color");
+            background-color: getColor("second-color");
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}

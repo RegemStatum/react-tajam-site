@@ -1,0 +1,11 @@
+@use "../abstracts" as *;
+
+.error-page {
+  @include breakpoint {
+    @include sectionPadding;
+
+    .btn {
+      margin: getMargin();
+    }
+  }
+}

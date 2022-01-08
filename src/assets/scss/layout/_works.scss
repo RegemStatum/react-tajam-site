@@ -1,0 +1,78 @@
+@use "../abstracts" as *;
+@use "../components" as *;
+
+.works {
+  @include breakpoint {
+    @include sectionPadding;
+
+    .btn {
+      display: block;
+      margin: getMargin(900) auto 0 auto;
+      padding-left: getPadding(700);
+      padding-right: getPadding(700);
+
+      &:hover {
+        background-color: getColor("bg-color");
+      }
+    }
+
+    .heading {
+      text-align: center;
+
+      a {
+        font-size: getFontSize();
+        color: getColor("heading-color");
+        text-decoration: none;
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        margin: getMargin() 0 getMargin(500) 0;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        @include defTransition;
+
+        &:hover {
+          color: getColor("second-color");
+        }
+
+        svg {
+          margin-left: getMargin(100);
+          height: getFontSize(500);
+          width: getFontSize(500);
+        }
+      }
+    }
+
+    .work-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: getMargin();
+      @include container;
+
+      @include xl {
+        width: 100%;
+        max-width: 100%;
+        gap: 0;
+      }
+
+      &-item {
+        width: 45%;
+        min-width: 14rem;
+        min-height: 14rem;
+        background-color: getColor("bg-color");
+        border: 1px solid getColor("second-color");
+        border-collapse: collapse;
+
+        @include lg {
+          width: 30%;
+        }
+
+        @include xl {
+          width: 16.4667%;
+          gap: 0;
+        }
+      }
+    }
+  }
+}

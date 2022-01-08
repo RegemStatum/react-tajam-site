@@ -1,0 +1,71 @@
+@use "../abstracts" as *;
+@use "../components" as *;
+
+.story {
+  @include breakpoint {
+    @include sectionPadding;
+
+    h2 {
+      color: getColor("heading-color");
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      padding-top: getPadding();
+
+      &:nth-child(1) {
+        padding-top: 0;
+      }
+    }
+
+    .btn {
+      display: block;
+      margin: getMargin(500) auto 0 auto;
+
+      &:hover {
+        background-color: getColor("bg-color");
+      }
+    }
+
+    .about-img {
+      display: none;
+    }
+  }
+
+  @include md {
+    .about-img {
+      display: block;
+      height: 100%;
+      margin-right: getMargin(500);
+      padding-top: getPadding(700);
+    }
+
+    .story-inf {
+      display: flex;
+
+      h2,
+      p {
+        text-align: left;
+      }
+    }
+
+    .btn {
+      margin-left: 0;
+    }
+  }
+
+  @include lg {
+    .about-img {
+      margin-right: getMargin("xl");
+    }
+
+    h2 {
+      text-align: left;
+    }
+
+    p {
+      padding-top: getPadding(600);
+    }
+  }
+}

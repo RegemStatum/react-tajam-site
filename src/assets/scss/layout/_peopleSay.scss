@@ -1,0 +1,118 @@
+@use "../abstracts" as *;
+@use "../components" as *;
+
+.people-say {
+  @include breakpoint {
+    @include sectionPadding;
+    @include backgroundImage("../../images/testimonials-bg.jpg");
+
+    p {
+      width: 90%;
+      margin: 0 auto;
+      color: getColor("first-color");
+      line-height: 1.7rem;
+      opacity: 0.8;
+
+      @include sm {
+        width: 100%;
+      }
+
+      @include lg {
+        width: 90%;
+      }
+
+      span {
+        font-weight: 600;
+        font-size: 1.15rem;
+      }
+
+      &:nth-child(2) {
+        margin-top: getMargin(800);
+        line-height: 1rem;
+        opacity: 1;
+      }
+
+      &:last-child {
+        font-size: 0.85rem;
+      }
+    }
+
+    svg {
+      font-size: 2.5rem;
+      margin-bottom: getMargin(500);
+      color: getColor("first-color");
+    }
+
+    .testim-container {
+      overflow: hidden;
+      min-height: 390px;
+      position: relative;
+
+      @include breakpoint(340px) {
+        min-height: 370px;
+      }
+      @include breakpoint(420px) {
+        min-height: 300px;
+      }
+      @include sm {
+        min-height: 270px;
+      }
+      @include md {
+        min-height: 220px;
+      }
+
+      .testim {
+        @include posAbsolute;
+        @include defTransition(all, 0.8s);
+
+        &.active {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        &.prev {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+
+        &.next {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+    }
+
+    .testim-control {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      max-width: 395px;
+      margin: getMargin() auto;
+
+      svg {
+        margin: getMargin(500) 0;
+        font-size: 2rem;
+        opacity: 0.8;
+        cursor: pointer;
+      }
+
+      img {
+        width: 45px;
+        height: 45px;
+        object-fit: cover;
+        display: none;
+        border-radius: 50%;
+
+        @include sm {
+          display: block;
+        }
+
+        &.active {
+          width: 70px;
+          height: 70px;
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@use "../abstracts" as *;
+
+.story-video {
+  @include breakpoint {
+    min-height: 20rem;
+    position: relative;
+    @include backgroundImage("../../images/about-bg.jpg");
+
+    .story-play {
+      display: block;
+      margin: auto auto;
+      @include posAbsolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      cursor: pointer;
+
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+
+        p {
+          color: getColor("second-color");
+        }
+      }
+
+      img {
+        margin: 0 auto;
+        @include defTransition;
+      }
+
+      p {
+        color: getColor();
+        padding-top: getPadding(600);
+        font-weight: 600;
+        text-transform: uppercase;
+        @include defTransition;
+      }
+    }
+  }
+
+  @include md {
+    min-height: 30rem;
+  }
+
+  @include lg {
+    min-height: 35rem;
+  }
+}

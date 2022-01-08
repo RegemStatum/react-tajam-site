@@ -1,0 +1,123 @@
+@use "../abstracts" as *;
+@use "../components" as *;
+
+.contact {
+  @include breakpoint {
+    @include sectionPadding;
+
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include breakpoint(830px) {
+      flex-direction: row;
+      justify-content: space-around;
+
+      .contact-form {
+        width: 43%;
+        margin-right: 3%;
+
+        form {
+          width: 100%;
+        }
+      }
+
+      .clients {
+        max-height: 21rem;
+      }
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include lg {
+        align-items: flex-start;
+      }
+
+      form {
+        width: 80%;
+        min-width: 20rem;
+        max-width: 28.75rem;
+
+        textarea {
+          min-width: 20rem;
+        }
+      }
+
+      textarea {
+        max-height: 22rem;
+      }
+
+      input,
+      textarea {
+        display: block;
+        width: 100%;
+        min-width: 15rem;
+        font-size: getFontSize();
+        border: 1px solid getColor("text-color");
+        padding: getPadding(200) getPadding();
+        margin: getMargin(500) 0;
+        opacity: 0.6;
+
+        @include md {
+          margin: getMargin(600) 0;
+        }
+
+        &:nth-child(1) {
+          margin-top: getMargin(700);
+        }
+
+        &:nth-child(4) {
+          resize: vertical;
+          min-height: 10rem;
+        }
+
+        &::placeholder {
+          font-family: "Roboto", sans-serif;
+          font-weight: 300;
+          opacity: 1;
+        }
+      }
+
+      .btn {
+        display: block;
+        margin: 0 auto getMargin() auto;
+        padding-left: getPadding(700);
+        padding-right: getPadding(700);
+
+        &:hover {
+          background-color: getColor("bg-color");
+        }
+
+        @include lg {
+          margin: 0;
+        }
+      }
+    }
+
+    .clients {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: getMargin(300);
+      min-width: 20rem;
+      width: 100%;
+      max-width: 21rem;
+      margin: 0 auto getMargin("xl") * 1.5 auto;
+      text-align: center;
+
+      @include lg {
+        margin: 0;
+
+        justify-content: flex-start;
+      }
+
+      .client {
+        width: 160px;
+        height: 80px;
+        object-fit: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@use "../abstracts" as *;
+@use "../components" as *;
+
+.team {
+  @include breakpoint {
+    @include sectionPadding;
+    @include backgroundImage("../../images/team-bg.jpg");
+
+    text-align: center;
+
+    p {
+      color: getColor();
+    }
+
+    & .container > h2 {
+      padding-bottom: getPadding(200);
+      color: getColor();
+    }
+
+    & .container > p {
+      position: relative;
+      margin-bottom: getMargin(700);
+      padding-bottom: getPadding(400);
+      &:nth-child(2)::after {
+        @include headingUnderscore;
+      }
+      &:nth-child(4) {
+        opacity: 0.9;
+        padding-bottom: getPadding();
+        margin-bottom: getMargin();
+      }
+    }
+
+    &-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: getMargin(400);
+
+      @include md {
+        gap: getMargin(200);
+      }
+
+      .team-card {
+        margin: 0 auto getMargin(700) auto;
+
+        &:last-child {
+          margin-bottom: getMargin("xl");
+        }
+
+        img {
+          width: 220px;
+          height: 230px;
+          object-fit: cover;
+          margin: getMargin(300) auto;
+        }
+
+        p {
+          font-weight: 600;
+          text-transform: uppercase;
+          font-size: 0.9rem;
+          opacity: 1;
+          line-height: 21px;
+
+          &:last-child {
+            padding-bottom: getPadding();
+            border-bottom: 1px solid getColor("text-color");
+          }
+        }
+
+        span {
+          font-size: getFontSize(300);
+          font-weight: 100;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@use "../abstracts" as *;
+
+.works-page {
+  @include lg {
+    min-height: 70vh;
+  }
+}

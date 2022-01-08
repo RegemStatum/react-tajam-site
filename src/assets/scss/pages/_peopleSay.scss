@@ -1,0 +1,13 @@
+@use "../abstracts" as *;
+
+.people-say-page {
+  @include lg {
+    .people-say {
+      //   padding: getPadding("xxl") 0;
+
+      .container {
+        padding: getPadding("xxl") 0;
+      }
+    }
+  }
+}

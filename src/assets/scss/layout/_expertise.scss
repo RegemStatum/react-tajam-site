@@ -1,0 +1,57 @@
+@use "../abstracts" as *;
+@use "../components" as *;
+
+.expertise {
+  @include breakpoint {
+    @include sectionPadding;
+
+    text-align: center;
+
+    & .container > h2 {
+      padding-bottom: getPadding(200);
+    }
+
+    & .container > p {
+      position: relative;
+      margin-bottom: getMargin(700);
+      padding-bottom: getPadding(400);
+      &::after {
+        @include headingUnderscore;
+      }
+    }
+
+    .expertise-cards {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: getMargin(600);
+
+      .expertise-card {
+        img {
+          min-height: 50px;
+          margin: getMargin(700) auto;
+        }
+
+        h4 {
+          margin-bottom: getMargin();
+        }
+      }
+
+      @include md {
+        flex-direction: row;
+        justify-content: center;
+        gap: getMargin(500);
+        .expertise-card {
+          padding: getPadding();
+          width: 45%;
+        }
+      }
+
+      @include lg {
+        .expertise-card {
+          width: 31%;
+        }
+      }
+    }
+  }
+}
